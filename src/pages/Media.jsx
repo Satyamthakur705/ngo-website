@@ -1,26 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
-const mediaItems = [
-  { id: 1, title: "Doctor Vision Examination - Senior Citizen", category: "Eye Camps", src: "/camps/camp_doctor_exam.jpg", desc: "Consultant doctor conducting on-site refraction and eye diagnosis." },
-  { id: 2, title: "Bhati Mines Eye Camp Volunteer Delegation", category: "Events", src: "/camps/camp_bhati_mines_team.jpg", desc: "Tandicia Association full team at Abhyudaya, Sanjay Colony camp." },
-  { id: 3, title: "Official Banner - Kusumpur Pahari Camp", category: "Eye Camps", src: "/camps/camp_kusumpur_banner.jpg", desc: "नि:शुल्क नेत्र जांच शिविर - Sherawali Mata Mandir, Kusumpur Pahari." },
-  { id: 4, title: "Core Volunteer On-Ground Coordination", category: "Events", src: "/camps/camp_team_selfie.jpg", desc: "Dedicated youth volunteers managing registration and patient care." },
-  { id: 5, title: "Ophthalmic Prescription & Diagnosis", category: "Eye Camps", src: "/camps/camp_prescription_slip.jpg", desc: "Partner eye clinic consultation slip with Centre for Eyes (Dr. Atul Garg)." },
-  { id: 6, title: "Sewa Rasoi Volunteer Kitchen", category: "Sewa Rasoi", src: "/image.png", desc: "Fresh meals cooked daily with devotion and cleanliness." },
-  { id: 7, title: "Community Meal Distribution Drive", category: "Sewa Rasoi", src: "/image copy.png", desc: "Serving warm food to hospital attendants and daily wagers." },
-  { id: 8, title: "Elders Gathering Under Nai Pehal", category: "Nai Pehal", src: "/story5.png", desc: "Listening, sharing, and creating mutual belonging." },
-  { id: 9, title: "Spectacles Fitting Session", category: "Eye Camps", src: "/gallery/image1.png", desc: "Beneficiaries selecting comfortable frames." },
-  { id: 10, title: "Field Nutrition Camp Preparation", category: "Sewa Rasoi", src: "/gallery/image5.png", desc: "Organizing bulk ingredients for community food relief." }
-];
+import { getAllPhotos } from "../utils/photoStore";
 
 export default function Media() {
   const [activeFilter, setActiveFilter] = useState("All");
+  const [items, setItems] = useState(getAllPhotos());
+
+  useEffect(() => {
+    const handleUpdate = () => {
+      setItems(getAllPhotos());
+    };
+    window.addEventListener("tandicia_photos_updated", handleUpdate);
+    return () => window.removeEventListener("tandicia_photos_updated", handleUpdate);
+  }, []);
 
   const filteredItems = activeFilter === "All"
-    ? mediaItems
-    : mediaItems.filter(item => item.category === activeFilter);
+    ? items
+    : items.filter(item => item.category === activeFilter);
 
   return (
     <div className="min-h-screen bg-stone-50 text-slate-900 font-sans">

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { getCustomPhotos } from "../utils/photoStore";
 
 const verifiedCamps = [
   {
@@ -63,12 +64,44 @@ const verifiedCamps = [
 export default function EyeCamps() {
   const [filter, setFilter] = useState("All");
   const [selectedCamp, setSelectedCamp] = useState(null);
+  const [customCampPhotos, setCustomCampPhotos] = useState(() => 
+    getCustomPhotos().filter(p => p.category === "Eye Camps")
+  );
+
+  useEffect(() => {
+    const handleUpdate = () => {
+      setCustomCampPhotos(getCustomPhotos().filter(p => p.category === "Eye Camps"));
+    };
+    window.addEventListener("tandicia_photos_updated", handleUpdate);
+    return () => window.removeEventListener("tandicia_photos_updated", handleUpdate);
+  }, []);
+
+  const dynamicCamps = customCampPhotos.map(p => ({
+    id: p.id,
+    name: p.title,
+    year: p.date ? p.date.substring(0, 4) : "2025",
+    location: p.location,
+    date: p.date,
+    peopleServed: "Verified Field Entry",
+    supportSummary: p.desc,
+    image: p.src,
+    objective: p.desc,
+    medicalTeam: "Tandicia Healthcare Team & Volunteer Specialists",
+    volunteers: "Field Volunteers",
+    servicesProvided: "On-site eye checkup, screening, and vision correction assistance.",
+    spectaclesDistributed: "Custom prescription corrective glasses.",
+    referrals: "Direct partner OPD consultations scheduled for complex eye care.",
+    mediaCoverage: "Documented in live Tandicia field register.",
+    gallery: [p.src]
+  }));
+
+  const allCamps = [...dynamicCamps, ...verifiedCamps];
 
   const filteredCamps = filter === "All" 
-    ? verifiedCamps 
+    ? allCamps 
     : filter === "Earlier"
-    ? verifiedCamps.filter(c => parseInt(c.year) < 2025)
-    : verifiedCamps.filter(c => c.year === filter);
+    ? allCamps.filter(c => parseInt(c.year) < 2025)
+    : allCamps.filter(c => c.year === filter);
 
   return (
     <div className="min-h-screen bg-stone-50 text-slate-900 font-sans">

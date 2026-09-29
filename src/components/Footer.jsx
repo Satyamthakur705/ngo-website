@@ -165,6 +165,9 @@ export default function Footer() {
             <Link to="/contact" className="hover:text-slate-300 transition-colors">
               Feedback & Grievance
             </Link>
+            <Link to="/admin" className="text-slate-400 hover:text-slate-200 transition-colors">
+              Admin Portal 🔐
+            </Link>
           </div>
         </div>
       </div>

@@ -13,6 +13,7 @@ import Documents from "./pages/Documents";
 import Contact from "./pages/Contact";
 import Donate from "./pages/Donate";
 import FAQ from "./pages/FAQ";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/documents" element={<Documents />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/donate" element={<Donate />} />
+        <Route path="/admin" element={<Admin />} />
         
         {/* Secondary / Helper Routes */}
         <Route path="/gallery" element={<Navigate to="/media#gallery" replace />} />
