@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { teamMembers } from "../data/teamData";
 
 export default function Home() {
   return (
@@ -606,7 +607,7 @@ export default function Home() {
             ======================================================== */}
         <section className="py-20 bg-stone-50 border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-12">
               <div className="lg:col-span-7 rounded-2xl overflow-hidden shadow-md">
                 <img
                   src="/team/team.png"
@@ -625,18 +626,39 @@ export default function Home() {
                   "Tandicia is powered by people who believe that meaningful change begins when we come together."
                 </p>
                 <p className="text-slate-600 text-sm leading-relaxed">
-                  From experienced medical doctors and field volunteers to everyday citizens giving their time, our collective strength lies in pure service and empathy.
+                  From experienced medical doctors and field coordinators to devoted citizens giving their time, our collective strength lies in pure service and empathy.
                 </p>
                 <div className="pt-2">
                   <Link
                     to="/team"
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm transition-all"
                   >
-                    <span>Meet Our Team</span>
+                    <span>Meet All 39 Volunteers</span>
                     <span>→</span>
                   </Link>
                 </div>
               </div>
+            </div>
+
+            {/* Featured Team Members Preview */}
+            <div className="text-center mb-8">
+              <h3 className="text-xl font-bold text-slate-900">On-Ground Volunteer Leadership</h3>
+              <p className="text-xs text-slate-500 mt-1">Verified identity badge holders dedicated to community service</p>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+              {teamMembers.slice(0, 6).map((member) => (
+                <div key={member.id} className="bg-white p-3.5 rounded-2xl border border-slate-200 text-center shadow-xs hover:shadow-md transition-all">
+                  <div className="w-20 h-20 mx-auto rounded-xl overflow-hidden mb-2.5 bg-slate-100 border border-slate-200">
+                    <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                  </div>
+                  <span className="text-[9px] font-mono font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full inline-block mb-1">
+                    ID: {member.volunteerId}
+                  </span>
+                  <h4 className="text-xs font-bold text-slate-900 truncate">{member.name}</h4>
+                  <p className="text-[10px] text-slate-500 truncate">{member.role}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
