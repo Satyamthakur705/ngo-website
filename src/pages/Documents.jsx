@@ -56,7 +56,7 @@ export default function Documents() {
         <section className="relative py-28 bg-slate-950 text-white overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
-              src="/public/gallery/image8.png"
+              src="/gallery/image8.png"
               alt="Transparency and governance"
               className="w-full h-full object-cover filter brightness-[0.32] contrast-[1.05]"
             />

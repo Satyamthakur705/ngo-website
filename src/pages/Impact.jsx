@@ -18,7 +18,7 @@ export default function Impact() {
       activity: "Comprehensive diagnostic eye refraction, cataract screening & spectacle provision",
       reached: "XX+ Patients examined & verified",
       outcome: "Immediate restoration of clear vision, reading ability, and work safety for daily earners.",
-      image: "/story1.png",
+      image: "/camps/camp_doctor_exam.jpg",
       tag: "Healthcare Impact"
     },
     {
@@ -44,7 +44,7 @@ export default function Impact() {
       name: "Smt. Ram Dulari",
       category: "Eye Care Beneficiary",
       quote: "Being able to see clearly again has restored my confidence. I can cook without fear and read my holy books every morning.",
-      image: "/story1.png"
+      image: "/camps/camp_doctor_exam.jpg"
     },
     {
       name: "Hospital Attendant Family",
@@ -71,7 +71,7 @@ export default function Impact() {
         <section className="relative py-28 bg-slate-950 text-white overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
-              src="/public/team/imapct.png"
+              src="/camps/camp_bhati_mines_team.jpg"
               alt="Tandicia verified impact"
               className="w-full h-full object-cover filter brightness-[0.35] contrast-[1.05]"
             />
@@ -203,29 +203,29 @@ export default function Impact() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-xs">
                 <span className="text-3xl mb-3 block">📍</span>
-                <h3 className="text-lg font-bold text-slate-900 mb-1">Lucknow Urban Core</h3>
+                <h3 className="text-lg font-bold text-slate-900 mb-1">New Delhi Community Camps</h3>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">
-                  Sewa Rasoi distribution points near government healthcare facilities and urban informal colonies.
+                  Comprehensive free eye screening and spectacle distribution camps at Kusumpur Pahari and Bhati Mines (Sanjay Colony).
                 </p>
-                <span className="text-xs font-semibold text-emerald-800">Regular Weekend Drives</span>
+                <span className="text-xs font-semibold text-emerald-800">Verified On-Site Camps</span>
               </div>
 
               <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-xs">
                 <span className="text-3xl mb-3 block">📍</span>
-                <h3 className="text-lg font-bold text-slate-900 mb-1">Rural Agricultural Belts</h3>
+                <h3 className="text-lg font-bold text-slate-900 mb-1">NCR & Peri-Urban Belts</h3>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">
-                  Comprehensive eye camps in peripheral rural blocks where access to ophthalmologists is restricted.
+                  Mobile diagnostic eye checks and senior citizen support drives across underserved settlement clusters.
                 </p>
-                <span className="text-xs font-semibold text-emerald-800">Periodic Diagnostic Camps</span>
+                <span className="text-xs font-semibold text-emerald-800">Periodic Diagnostic Drives</span>
               </div>
 
               <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-xs">
                 <span className="text-3xl mb-3 block">📍</span>
-                <h3 className="text-lg font-bold text-slate-900 mb-1">Suburban Neighbourhoods</h3>
+                <h3 className="text-lg font-bold text-slate-900 mb-1">Community Mutual Aid Hubs</h3>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">
-                  Senior citizen support networks and single-parent mutual aid circles under Nai Pehal.
+                  Nutritional support via Sewa Rasoi and senior citizen care circles under the Nai Pehal initiative.
                 </p>
-                <span className="text-xs font-semibold text-emerald-800">Ongoing Community Circles</span>
+                <span className="text-xs font-semibold text-emerald-800">Ongoing Grassroots Circles</span>
               </div>
             </div>
           </div>

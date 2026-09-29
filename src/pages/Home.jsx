@@ -147,7 +147,7 @@ export default function Home() {
               <div className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-xs hover:shadow-xl transition-all flex flex-col group">
                 <div className="relative h-64 overflow-hidden bg-slate-100">
                   <img
-                    src="/story1.png"
+                    src="/camps/camp_doctor_exam.jpg"
                     alt="Doctor examining elderly beneficiary at Eye Camp"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -314,13 +314,13 @@ export default function Home() {
               <div className="lg:col-span-6">
                 <div className="relative rounded-3xl overflow-hidden shadow-xl border border-slate-100 aspect-4/3">
                   <img
-                    src="/story3.png"
-                    alt="Doctor screening a patient at Tandicia Eye Camp"
+                    src="/camps/camp_doctor_exam.jpg"
+                    alt="Doctor screening an elderly beneficiary at Tandicia Eye Camp"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent flex items-end p-6">
                     <p className="text-white text-sm font-medium">
-                      On-site diagnostic screening by qualified medical practitioners
+                      On-site diagnostic screening by qualified eye specialists
                     </p>
                   </div>
                 </div>
@@ -374,39 +374,39 @@ export default function Home() {
 
             </div>
 
-            {/* 3 Featured Camp Cards */}
+            {/* 3 Featured Camp Cards with Real Photos & Verified Banners */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
               <div className="rounded-2xl border border-slate-200 p-5 bg-stone-50/50 hover:bg-white hover:shadow-md transition-all">
-                <img src="/gallery/image1.png" alt="Camp session" className="w-full h-44 object-cover rounded-xl mb-4" />
+                <img src="/camps/camp_kusumpur_banner.jpg" alt="Kusumpur Pahari Camp Banner" className="w-full h-44 object-cover rounded-xl mb-4" />
                 <div className="flex items-center justify-between text-xs text-slate-500 mb-2">
-                  <span className="font-semibold text-emerald-800">Lucknow District</span>
-                  <span>Verified Camp</span>
+                  <span className="font-semibold text-emerald-800">Kusumpur Pahari, New Delhi</span>
+                  <span>14 Sep 2025</span>
                 </div>
-                <h4 className="text-lg font-bold text-slate-900 mb-1">Community Eye Care Drive</h4>
-                <p className="text-xs text-slate-600 mb-3">Diagnostic screening & customized spectacle provision.</p>
-                <span className="text-xs font-semibold text-sky-900">Complete Records Available</span>
+                <h4 className="text-lg font-bold text-slate-900 mb-1">नि:शुल्क नेत्र जांच शिविर</h4>
+                <p className="text-xs text-slate-600 mb-3">Sherawali Mata Mandir, Block C. Free eye check-up and spectacles distribution.</p>
+                <span className="text-xs font-semibold text-sky-900">Official Camp Record</span>
               </div>
 
               <div className="rounded-2xl border border-slate-200 p-5 bg-stone-50/50 hover:bg-white hover:shadow-md transition-all">
-                <img src="/gallery/image2.png" alt="Camp session" className="w-full h-44 object-cover rounded-xl mb-4" />
+                <img src="/camps/camp_bhati_mines_team.jpg" alt="Bhati Mines Camp Volunteers" className="w-full h-44 object-cover rounded-xl mb-4" />
                 <div className="flex items-center justify-between text-xs text-slate-500 mb-2">
-                  <span className="font-semibold text-emerald-800">Rural Outreach</span>
-                  <span>Verified Camp</span>
+                  <span className="font-semibold text-emerald-800">Bhati Mines, New Delhi</span>
+                  <span>29 Aug 2025</span>
                 </div>
-                <h4 className="text-lg font-bold text-slate-900 mb-1">Senior Citizens Vision Camp</h4>
-                <p className="text-xs text-slate-600 mb-3">Cataract detection and elderly eye consultations.</p>
-                <span className="text-xs font-semibold text-sky-900">Complete Records Available</span>
+                <h4 className="text-lg font-bold text-slate-900 mb-1">Sanjay Colony Vision Drive</h4>
+                <p className="text-xs text-slate-600 mb-3">Abhyudaya A-116/A. Full screening team, free medicines, and eye consultations.</p>
+                <span className="text-xs font-semibold text-sky-900">Official Camp Record</span>
               </div>
 
               <div className="rounded-2xl border border-slate-200 p-5 bg-stone-50/50 hover:bg-white hover:shadow-md transition-all">
-                <img src="/gallery/image3.png" alt="Camp session" className="w-full h-44 object-cover rounded-xl mb-4" />
+                <img src="/camps/camp_doctor_exam.jpg" alt="Clinical eye diagnostic screening" className="w-full h-44 object-cover rounded-xl mb-4" />
                 <div className="flex items-center justify-between text-xs text-slate-500 mb-2">
-                  <span className="font-semibold text-emerald-800">Suburban Centre</span>
-                  <span>Verified Camp</span>
+                  <span className="font-semibold text-emerald-800">Clinical Outreach</span>
+                  <span>OPD & Retinoscopy</span>
                 </div>
-                <h4 className="text-lg font-bold text-slate-900 mb-1">Public Health Screening</h4>
-                <p className="text-xs text-slate-600 mb-3">Primary vision screening with volunteer doctors.</p>
-                <span className="text-xs font-semibold text-sky-900">Complete Records Available</span>
+                <h4 className="text-lg font-bold text-slate-900 mb-1">Senior Diagnostic Care</h4>
+                <p className="text-xs text-slate-600 mb-3">Diagnostic examination by qualified doctors with Centre for Eyes.</p>
+                <span className="text-xs font-semibold text-sky-900">Verified Clinical Partner</span>
               </div>
             </div>
           </div>
@@ -495,7 +495,7 @@ export default function Home() {
 
               {/* Community Initiatives */}
               <div className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-xs hover:shadow-md transition-all">
-                <img src="/public/team/imapct.png" alt="Community Initiatives" className="w-full h-56 object-cover" />
+                <img src="/camps/camp_team_selfie.jpg" alt="Tandicia Volunteers and Community Initiatives" className="w-full h-56 object-cover" />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-slate-900 mb-2">Community Initiatives</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
@@ -730,8 +730,8 @@ export default function Home() {
         <section className="relative py-24 bg-slate-950 text-white overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
-              src="/public/gallery/image8.png"
-              alt="Volunteers interacting with community"
+              src="/camps/camp_bhati_mines_team.jpg"
+              alt="Volunteers interacting with community at camp"
               className="w-full h-full object-cover filter brightness-[0.32] contrast-[1.05]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/50" />

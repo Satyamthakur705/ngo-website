@@ -20,7 +20,7 @@ export default function SewaRasoi() {
       step: "03",
       title: "Connect",
       desc: "Sitting together, listening to stories, and breaking social barriers through the universal bond of shared food and empathy.",
-      image: "/public/team/imapct.png"
+      image: "/camps/camp_team_selfie.jpg"
     }
   ];
 

@@ -3,14 +3,16 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const mediaItems = [
-  { id: 1, title: "Diagnostic Testing at Village Eye Camp", category: "Eye Camps", src: "/story1.png", desc: "Our volunteer optometrist testing visual clarity." },
-  { id: 2, title: "Sewa Rasoi Volunteer Kitchen", category: "Sewa Rasoi", src: "/image.png", desc: "Fresh meals cooked daily with devotion and cleanliness." },
-  { id: 3, title: "Slit Lamp Geriatric Examination", category: "Eye Camps", src: "/story3.png", desc: "Senior citizen undergoing cataract diagnostic check." },
-  { id: 4, title: "Community Meal Distribution Drive", category: "Sewa Rasoi", src: "/image copy.png", desc: "Serving warm food to hospital attendants." },
-  { id: 5, title: "Elders Gathering Under Nai Pehal", category: "Nai Pehal", src: "/story5.png", desc: "Listening, sharing, and creating mutual belonging." },
-  { id: 6, title: "Volunteer Briefing and Preparation", category: "Events", src: "/public/team/team.png", desc: "Tandicia team coordinating before field operations." },
-  { id: 7, title: "Spectacles Fitting Session", category: "Eye Camps", src: "/gallery/image1.png", desc: "Beneficiaries selecting comfortable frames." },
-  { id: 8, title: "Field Nutrition Camp Preparation", category: "Sewa Rasoi", src: "/gallery/image5.png", desc: "Organizing bulk ingredients for community food relief." }
+  { id: 1, title: "Doctor Vision Examination - Senior Citizen", category: "Eye Camps", src: "/camps/camp_doctor_exam.jpg", desc: "Consultant doctor conducting on-site refraction and eye diagnosis." },
+  { id: 2, title: "Bhati Mines Eye Camp Volunteer Delegation", category: "Events", src: "/camps/camp_bhati_mines_team.jpg", desc: "Tandicia Association full team at Abhyudaya, Sanjay Colony camp." },
+  { id: 3, title: "Official Banner - Kusumpur Pahari Camp", category: "Eye Camps", src: "/camps/camp_kusumpur_banner.jpg", desc: "नि:शुल्क नेत्र जांच शिविर - Sherawali Mata Mandir, Kusumpur Pahari." },
+  { id: 4, title: "Core Volunteer On-Ground Coordination", category: "Events", src: "/camps/camp_team_selfie.jpg", desc: "Dedicated youth volunteers managing registration and patient care." },
+  { id: 5, title: "Ophthalmic Prescription & Diagnosis", category: "Eye Camps", src: "/camps/camp_prescription_slip.jpg", desc: "Partner eye clinic consultation slip with Centre for Eyes (Dr. Atul Garg)." },
+  { id: 6, title: "Sewa Rasoi Volunteer Kitchen", category: "Sewa Rasoi", src: "/image.png", desc: "Fresh meals cooked daily with devotion and cleanliness." },
+  { id: 7, title: "Community Meal Distribution Drive", category: "Sewa Rasoi", src: "/image copy.png", desc: "Serving warm food to hospital attendants and daily wagers." },
+  { id: 8, title: "Elders Gathering Under Nai Pehal", category: "Nai Pehal", src: "/story5.png", desc: "Listening, sharing, and creating mutual belonging." },
+  { id: 9, title: "Spectacles Fitting Session", category: "Eye Camps", src: "/gallery/image1.png", desc: "Beneficiaries selecting comfortable frames." },
+  { id: 10, title: "Field Nutrition Camp Preparation", category: "Sewa Rasoi", src: "/gallery/image5.png", desc: "Organizing bulk ingredients for community food relief." }
 ];
 
 export default function Media() {
@@ -31,7 +33,7 @@ export default function Media() {
         <section className="relative py-28 bg-slate-950 text-white overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
-              src="/public/gallery/image8.png"
+              src="/camps/camp_bhati_mines_team.jpg"
               alt="Tandicia community moments"
               className="w-full h-full object-cover filter brightness-[0.35] contrast-[1.05]"
             />
@@ -62,8 +64,8 @@ export default function Media() {
             <div className="rounded-3xl border border-slate-200 overflow-hidden bg-stone-50 grid grid-cols-1 lg:grid-cols-12 shadow-sm">
               <div className="lg:col-span-6 relative h-80 lg:h-auto">
                 <img
-                  src="/story1.png"
-                  alt="Featured Story - Clear vision restored"
+                  src="/camps/camp_doctor_exam.jpg"
+                  alt="Featured Story - Doctor examining patient"
                   className="w-full h-full object-cover"
                 />
               </div>

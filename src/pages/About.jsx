@@ -72,7 +72,7 @@ export default function About() {
         <section className="relative py-24 bg-sky-950 text-white overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
-              src="/public/gallery/image7.png"
+              src="/gallery/image7.png"
               alt="Community solidarity"
               className="w-full h-full object-cover filter brightness-[0.25]"
             />
@@ -205,7 +205,7 @@ export default function About() {
                 <p className="text-slate-600 text-sm leading-relaxed mt-2 mb-4">
                   Born from a shared realization that compassion and friendship are vital social forces, professionals and community volunteers came together with the motto: मित्रता • दोस्ती • अपनापन.
                 </p>
-                <img src="/public/team/team.png" alt="Inception team" className="w-full max-w-md h-48 object-cover rounded-2xl shadow-xs" />
+                <img src="/camps/camp_team_selfie.jpg" alt="Inception core team" className="w-full max-w-md h-48 object-cover rounded-2xl shadow-xs" />
               </div>
 
               {/* Milestone 2 */}
@@ -218,9 +218,9 @@ export default function About() {
                   Launch of Community Eye Care Camps
                 </h3>
                 <p className="text-slate-600 text-sm leading-relaxed mt-2 mb-4">
-                  Mobilized certified ophthalmologists and volunteers to conduct free diagnostic eye screening camps, distributing prescription spectacles and identifying patients needing cataract procedures.
+                  Mobilized certified ophthalmologists and volunteers to conduct free diagnostic eye screening camps across Delhi communities (Kusumpur Pahari & Bhati Mines), distributing prescription spectacles and identifying surgical cases.
                 </p>
-                <img src="/story1.png" alt="Eye camp launch" className="w-full max-w-md h-48 object-cover rounded-2xl shadow-xs" />
+                <img src="/camps/camp_doctor_exam.jpg" alt="Eye camp launch and doctor examination" className="w-full max-w-md h-48 object-cover rounded-2xl shadow-xs" />
               </div>
 
               {/* Milestone 3 */}

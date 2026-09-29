@@ -5,58 +5,58 @@ import Footer from "../components/Footer";
 
 const verifiedCamps = [
   {
-    id: "camp-1",
-    name: "Rural Vision Diagnostic & Spectacle Camp",
-    year: "2026",
-    location: "Malihabad Rural Block, Lucknow",
-    date: "February 2026",
+    id: "camp-delhi-kusumpur",
+    name: "Kusumpur Pahari Free Eye Screening & Spectacle Camp",
+    year: "2025",
+    location: "Sherawali Mata Mandir, Block-C, Kusumpur Pahari, New Delhi",
+    date: "14 September 2025",
     peopleServed: "Verified On-Site Records",
-    supportSummary: "Free refraction, doctor consultation, and custom prescription glasses",
-    image: "/story1.png",
-    objective: "To eliminate uncorrected refractive errors among agricultural workers and elder citizens who lack access to primary eye care facilities.",
-    medicalTeam: "Certified Optometrists & Consultant Ophthalmologists",
-    volunteers: "Tandicia Youth & Community Volunteers",
-    servicesProvided: "Acuity testing, refraction, intraocular pressure check, and cataract screening.",
-    spectaclesDistributed: "Custom prescription frames distributed directly to beneficiaries.",
-    referrals: "Identified cataract cases referred to empaneled partner hospitals for subsidized surgical intervention.",
-    mediaCoverage: "Covered in local community health newsletters and village welfare logs.",
-    gallery: ["/gallery/image1.png", "/gallery/image2.png", "/gallery/image3.png"]
+    supportSummary: "नि:शुल्क नेत्र जांच शिविर — Free diagnostic checkup, doctor consultation, and prescription spectacles",
+    image: "/camps/camp_kusumpur_banner.jpg",
+    objective: "Delivering primary ophthalmic care and free vision correction directly to residents of Kusumpur Pahari with dignity and care.",
+    medicalTeam: "Dr. Atul Garg, M.B.B.S., M.S. (Senior Eye Surgeon, Centre for Eyes) & Volunteer Medical Specialists",
+    volunteers: "Tandicia Association Core Team & Community Volunteers",
+    servicesProvided: "Acuity testing, refraction, intraocular pressure check, cataract screening, and clinical consultations.",
+    spectaclesDistributed: "Custom prescription corrective glasses provided free of cost to verified attendees.",
+    referrals: "Identified cataract and advanced ocular cases referred to partner surgical centres for subsidised treatment.",
+    mediaCoverage: "Documented in official Tandicia field registers with verified camp photography.",
+    gallery: ["/camps/camp_kusumpur_banner.jpg", "/camps/camp_doctor_exam.jpg", "/camps/camp_team_selfie.jpg"]
   },
   {
-    id: "camp-2",
-    name: "Senior Citizens Community Eye Clinic",
+    id: "camp-delhi-bhati-mines",
+    name: "Bhati Mines Free Community Eye Screening Camp",
     year: "2025",
-    location: "Alambagh Community Centre, Lucknow",
-    date: "November 2025",
+    location: "Abhyudaya, A-116/A, Sanjay Colony, Bhati Mines, New Delhi - 110074",
+    date: "29 August 2025",
     peopleServed: "Verified On-Site Records",
-    supportSummary: "Specialized geriatric vision assessment and bifocal lens assistance",
-    image: "/story3.png",
-    objective: "Addressing age-related eye conditions, presbyopia, and early diabetic retinopathy screening for elders.",
-    medicalTeam: "Volunteer Senior Eye Specialists",
-    volunteers: "Tandicia Senior Care Volunteers",
-    servicesProvided: "Slit lamp evaluation, dilated fundus exam, and vision aid consultation.",
-    spectaclesDistributed: "High-grade bifocal reading glasses provided free of cost.",
-    referrals: "Glaucoma follow-up consultations scheduled with specialist clinics.",
-    mediaCoverage: "Recognised by local residents welfare association.",
-    gallery: ["/gallery/image4.png", "/gallery/image5.png", "/gallery/image6.png"]
+    supportSummary: "नि:शुल्क नेत्र जांच शिविर — On-ground consultation, cataract screening & free eyewear assistance",
+    image: "/camps/camp_bhati_mines_team.jpg",
+    objective: "Reaching elderly citizens, daily wage earners, and families in the remote Bhati Mines region with critical eye health diagnosis.",
+    medicalTeam: "Volunteer Senior Eye Specialists & Optometry Team",
+    volunteers: "Tandicia Association Field Volunteers & Sanjay Colony Youth",
+    servicesProvided: "Slit-lamp & fundus evaluation, visual acuity assessment, refractive correction, and eye drop distribution.",
+    spectaclesDistributed: "Durable high-grade reading and distance eyeglasses fitted directly on-site.",
+    referrals: "Specialist OPD referral slips issued in collaboration with Centre for Eyes.",
+    mediaCoverage: "Recorded in village community records and Tandicia field archives.",
+    gallery: ["/camps/camp_bhati_mines_team.jpg", "/camps/camp_doctor_exam.jpg", "/camps/camp_team_selfie.jpg"]
   },
   {
-    id: "camp-3",
-    name: "Urban Slum Vision & Health Drive",
+    id: "camp-geriatric-outreach",
+    name: "Geriatric & Underserved Vision Diagnostic Outreach",
     year: "2025",
-    location: "Faizabad Road Cluster, Lucknow",
-    date: "July 2025",
+    location: "Delhi NCR Community Clusters",
+    date: "August - September 2025",
     peopleServed: "Verified On-Site Records",
-    supportSummary: "Pediatric and adult visual acuity assessment with eyewear",
-    image: "/gallery/image1.png",
-    objective: "Reaching daily wage earners and school children suffering from undiagnosed blurry vision.",
-    medicalTeam: "Community Optometry Mobile Team",
-    volunteers: "Local Resident Volunteers",
-    servicesProvided: "School-age vision screening and adult reading aid distribution.",
-    spectaclesDistributed: "Durable corrective spectacles fitted on site.",
-    referrals: "Direct referral slips provided for secondary eye care centers.",
-    mediaCoverage: "Community bulletin feature.",
-    gallery: ["/gallery/image7.png", "/gallery/image8.png", "/story5.png"]
+    supportSummary: "Doctor consultation, specialized geriatric refractive testing, and clinical follow-ups",
+    image: "/camps/camp_doctor_exam.jpg",
+    objective: "Eliminating avoidable blindness and progressive vision loss among underprivileged senior citizens.",
+    medicalTeam: "Certified Optometrists & Specialist Ophthalmologists",
+    volunteers: "Tandicia Healthcare Mobilisation Volunteers",
+    servicesProvided: "Individual refraction, cataract grading, diabetic eye screening, and medication support.",
+    spectaclesDistributed: "Custom bifocal and single vision lenses provided.",
+    referrals: "Direct partner OPD consultations scheduled for complex ophthalmic procedures.",
+    mediaCoverage: "Tandicia Community Healthcare Archive.",
+    gallery: ["/camps/camp_doctor_exam.jpg", "/camps/camp_prescription_slip.jpg", "/camps/camp_bhati_mines_team.jpg"]
   }
 ];
 
@@ -81,8 +81,8 @@ export default function EyeCamps() {
         <section className="relative py-28 bg-slate-950 text-white overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
-              src="/story3.png"
-              alt="Eye Camp Doctor and Beneficiary"
+              src="/camps/camp_doctor_exam.jpg"
+              alt="Eye Camp Doctor examining elderly beneficiary"
               className="w-full h-full object-cover filter brightness-[0.35] contrast-[1.05]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40" />
@@ -238,8 +238,8 @@ export default function EyeCamps() {
             <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-xs grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
               <div className="md:col-span-5 rounded-2xl overflow-hidden shadow-md">
                 <img
-                  src="/story1.png"
-                  alt="Beneficiary story"
+                  src="/camps/camp_doctor_exam.jpg"
+                  alt="Doctor examining elderly patient at eye camp"
                   className="w-full h-full object-cover aspect-4/3"
                 />
               </div>
