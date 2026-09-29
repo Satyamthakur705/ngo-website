@@ -1,292 +1,410 @@
-import { motion, useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
-
-const impactStats = [
-  { value: 12500, suffix: "+", label: "People screened across multiple villages and slum communities" },
-  { value: 3600, suffix: "+", label: "Free spectacles distributed to individuals in need" },
-  { value: 420, suffix: "+", label: "Cataract surgeries coordinated through partner hospitals" },
-];
-
-const teamMembers = [
-  "Sanjeev Babbar",
-  "Dr. Prabhat Manocha",
-  "Vikram Soni",
-  "Yash Babbar",
-  "Narender Sharma",
-  "Raj Chhabra",
-  "Ravi Sikka",
-  "Karan Jaggi",
-  "Raj Malhotra",
-  "Anoop Rana",
-  "Anish Aggarwal",
-  "Subhash Saini",
-  "Rajesh Arora",
-  "Sushil Bhardwaj",
-  "Amit Mathur",
-  "Rajeev Sharma",
-  "Gaurav Puri",
-  "Ashok Dua",
-  "Rajesh Negi",
-  "Akhilesh Verma",
-  "Himanshu Atal",
-  "Kanjam Manocha",
-  "Tanvee Manocha",
-  "Parth Sharma",
-  "Naveen Sharma",
-  "Charvi Arora",
-  "Kiran Sethi",
-];
-
-const values = [
-  { title: "Accessibility", desc: "Free eye care for every individual, regardless of income or location." },
-  { title: "Dignity", desc: "Every patient deserves respectful, quality care." },
-  { title: "Impact", desc: "Real outcomes through early detection and follow-up." },
-];
-
-function AnimatedNumber({ value, suffix, inView }) {
-  const [displayValue, setDisplayValue] = useState(0);
-
-  useEffect(() => {
-    if (!inView) return;
-    let start = 0;
-    const increment = value / (1500 / 16);
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= value) {
-        setDisplayValue(value);
-        clearInterval(timer);
-      } else {
-        setDisplayValue(Math.floor(start));
-      }
-    }, 16);
-    return () => clearInterval(timer);
-  }, [inView, value]);
-
-  return <span>{displayValue.toLocaleString()}{suffix}</span>;
-}
-
-function ImpactCard({ stat, index, isInView }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: 0.1 + index * 0.12 }}
-      className="relative bg-white rounded-2xl p-6 md:p-8 shadow-md hover:shadow-lg transition-shadow"
-    >
-      <div className="text-4xl md:text-5xl lg:text-6xl font-serif text-gray-900 mb-2">
-        <AnimatedNumber value={stat.value} suffix={stat.suffix} inView={isInView} />
-      </div>
-      <p className="text-gray-500 text-sm md:text-base leading-relaxed">{stat.label}</p>
-    </motion.div>
-  );
-}
-
-function TeamCard({ name, index, isInView }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      whileHover={{ y: -6 }}
-      transition={{ duration: 0.35, delay: index * 0.025 }}
-      className="group text-center"
-    >
-      <div className="relative w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 mx-auto mb-3 rounded-2xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow">
-        <img
-          src={`/team/${index + 1}.jpg`}
-          alt={name}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          onError={(e) => {
-            e.target.style.opacity = "0";
-            e.target.parentElement.style.background = "linear-gradient(135deg, #d1fae5 0%, #6ee7b7 100%)";
-            e.target.parentElement.innerHTML = `<span class="flex items-center justify-center w-full h-full text-green-700 font-bold text-lg md:text-xl">${name.split(" ").map((n) => n[0]).join("")}</span>`;
-          }}
-        />
-      </div>
-      <p className="font-semibold text-gray-800 text-xs md:text-sm">{name}</p>
-      <p className="text-gray-400 text-xs md:text-sm mt-0.5">Member</p>
-    </motion.div>
-  );
-}
-
-function ValueCard({ value, index, isInView }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 25 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
-      className="bg-white rounded-xl p-5 md:p-6 shadow-sm hover:shadow-md transition-shadow"
-    >
-      <div className="w-10 h-10 md:w-12 md:h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-        <svg className="w-5 h-5 md:w-6 md:h-6 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-        </svg>
-      </div>
-      <h3 className="text-lg md:text-xl font-serif text-gray-900 mb-2">{value.title}</h3>
-      <p className="text-gray-500 text-sm md:text-base">{value.desc}</p>
-    </motion.div>
-  );
-}
-
-function SectionImage({ src, alt, index, isInView }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="relative rounded-2xl overflow-hidden shadow-lg group"
-    >
-      <img
-        src={src}
-        alt={alt}
-        className="w-full h-64 md:h-80 lg:h-96 object-cover group-hover:scale-105 transition-transform duration-700"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-    </motion.div>
-  );
-}
+import Footer from "../components/Footer";
 
 export default function About() {
-  const heroRef = useRef(null);
-  const heroInView = useInView(heroRef, { once: true });
-
-  const approachRef = useRef(null);
-  const approachInView = useInView(approachRef, { once: true, amount: 0.3 });
-
-  const statsRef = useRef(null);
-  const statsInView = useInView(statsRef, { once: true, amount: 0.3 });
-
-  const teamRef = useRef(null);
-  const teamInView = useInView(teamRef, { once: true, amount: 0.2 });
-
   return (
-    <div className="bg-white min-h-screen">
+    <div className="min-h-screen bg-stone-50 text-slate-900 font-sans">
       <Navbar />
 
-      <section ref={heroRef} className="relative px-6 md:px-12 pt-16 md:pt-24 pb-12 md:pb-20 overflow-hidden">
-        <div className="absolute top-10 right-0 w-80 h-80 md:w-96 md:h-96 bg-green-100 rounded-full blur-3xl opacity-40" />
+      <main>
+        {/* ========================================================
+            HERO
+            ======================================================== */}
+        <section className="relative py-28 bg-slate-950 text-white overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="/team/team.png"
+              alt="Tandicia community gathering"
+              className="w-full h-full object-cover filter brightness-[0.38] contrast-[1.05]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/50" />
+          </div>
 
-        <div className="relative max-w-6xl mx-auto">
-          <motion.span
-            initial={{ opacity: 0, x: -20 }}
-            animate={heroInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="inline-block text-xs md:text-sm text-green-700 font-medium mb-4 md:mb-6"
-          >
-            About Tandicia
-          </motion.span>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight mb-6 md:mb-8"
-          >
-            For communities who deserve
-            <br />
-            <span className="text-gray-400">clear vision, dignity,</span>
-            <br />
-            <span className="text-gray-400">and accessible care.</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base md:text-lg lg:text-xl text-gray-500 max-w-2xl leading-relaxed"
-          >
-            Tandicia brings free eye-care to underserved villages, slum settlements, and low income regions. Our mission is simple — make quality vision care reachable for every individual, without cost, delay, or discrimination.
-          </motion.p>
-        </div>
-      </section>
-
-      <section className="px-6 md:px-12 pb-12 md:pb-20">
-        <div className="max-w-6xl mx-auto">
-          <SectionImage src="/team/team.png" alt="Tandicia eye camp" index={0} isInView={heroInView} />
-        </div>
-      </section>
-
-      <section ref={approachRef} className="px-6 md:px-12 py-12 md:py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={approachInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="mb-10 md:mb-14"
-          >
-            <h2 className="text-3xl md:text-5xl font-serif text-gray-900 mb-4">
-              Our approach goes beyond treatment.
-            </h2>
-            <p className="text-gray-500 text-base md:text-lg max-w-2xl leading-relaxed">
-              We're building a system where underserved communities get regular screenings, reliable diagnosis, and respectful care. Our approach blends medical expertise, community outreach, and structured camp execution.
+          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span className="text-xs uppercase tracking-widest text-emerald-400 font-semibold mb-3 block">
+              Our Identity & Purpose
+            </span>
+            <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-white mb-4">
+              About Tandicia
+            </h1>
+            <p className="text-2xl sm:text-3xl text-amber-200/90 font-serif mb-6">
+              मित्रता • दोस्ती • अपनापन
             </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            {values.map((value, index) => (
-              <ValueCard key={index} value={value} index={index} isInView={approachInView} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 md:px-12 pb-12 md:pb-20">
-        <div className="max-w-6xl mx-auto">
-          <SectionImage src="/about/approach.jpg" alt="Our approach" index={1} isInView={approachInView} />
-        </div>
-      </section>
-
-      <section ref={statsRef} className="px-6 md:px-12 py-12 md:py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={statsInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="mb-8 md:mb-12"
-          >
-            <h2 className="text-3xl md:text-5xl font-serif text-gray-900">
-              Numbers behind the impact
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            {impactStats.map((stat, index) => (
-              <ImpactCard key={index} stat={stat} index={index} isInView={statsInView} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 md:px-12 pb-12 md:pb-20">
-        <div className="max-w-6xl mx-auto">
-          <SectionImage src="/team/impact.png" alt="Our impact" index={2} isInView={statsInView} />
-        </div>
-      </section>
-
-      <section className="px-6 md:px-12 py-12 md:py-20">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            ref={teamRef}
-            initial={{ opacity: 0, y: 25 }}
-            animate={teamInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="mb-8 md:mb-12"
-          >
-            <h2 className="text-3xl md:text-5xl font-serif text-gray-900 mb-2">
-              Meet the team
-            </h2>
-            <p className="text-gray-500 text-base md:text-lg">
-              Building one eye camp at a time
+            <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+              Connecting People. Serving Communities. Being There for Each Other.
             </p>
-          </motion.div>
-
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-4 md:gap-6">
-            {teamMembers.map((name, index) => (
-              <TeamCard key={index} name={name} index={index} isInView={teamInView} />
-            ))}
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* ========================================================
+            SECTION 1 — WHO WE ARE
+            ======================================================== */}
+        <section className="py-20 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <span className="text-xs uppercase tracking-widest text-emerald-800 font-semibold">
+                Grassroots Commitment
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 mt-2">
+                Who We Are
+              </h2>
+              <div className="w-16 h-1 bg-amber-600 mx-auto mt-4 rounded-full" />
+            </div>
+
+            <div className="space-y-6 text-slate-700 text-lg leading-relaxed">
+              <p>
+                <strong>Tandicia Association</strong> is a community-driven organisation bringing together volunteers, professionals, doctors, supporters, and everyday community members to address real social and community needs.
+              </p>
+              <p>
+                We believe that the most powerful social change does not happen from distant offices, but on the ground—where people meet as equals. Whether it is screening the eyes of an elder who cannot afford an examination, serving a hot meal with genuine dignity, or standing by a family navigating crisis, Tandicia exists to be there.
+              </p>
+              <p className="italic text-slate-600 border-l-4 border-emerald-700 pl-4 py-1">
+                "Our guiding light is simple: service rooted in respect, friendships that cross social boundaries, and a sense of shared belonging that leaves no one behind."
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            SECTION 2 — OUR VISION
+            ======================================================== */}
+        <section className="relative py-24 bg-sky-950 text-white overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="/public/gallery/image7.png"
+              alt="Community solidarity"
+              className="w-full h-full object-cover filter brightness-[0.25]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-sky-950/90 via-sky-950/70 to-sky-950/90" />
+          </div>
+
+          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <span className="text-xs uppercase tracking-widest text-amber-300 font-semibold block">
+              Our Vision
+            </span>
+            <blockquote className="text-2xl sm:text-4xl font-serif leading-relaxed text-white font-medium">
+              "A connected and compassionate community where people stand by each other—with Mitrata, Dosti aur Apnapan."
+            </blockquote>
+            <p className="text-sm text-slate-300 max-w-xl mx-auto">
+              Every initiative we undertake is measured by one standard: does it elevate human dignity and strengthen social bonds?
+            </p>
+          </div>
+        </section>
+
+        {/* ========================================================
+            SECTION 3 — OUR OBJECTIVES
+            ======================================================== */}
+        <section className="py-20 bg-stone-50 border-y border-stone-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <span className="text-xs uppercase tracking-widest text-emerald-800 font-semibold">
+                Strategic Focus
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 mt-2">
+                Our Objectives
+              </h2>
+              <p className="text-slate-600 text-sm mt-3">
+                Six practical pillars guiding our verified field operations.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="p-7 rounded-3xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md transition-all">
+                <div className="w-12 h-12 rounded-2xl bg-sky-100 text-sky-900 flex items-center justify-center text-xl font-bold mb-5">
+                  🩺
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Accessible Healthcare</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Delivering preventive diagnostics, primary vision screenings, corrective spectacles, and doctor consultations directly to underserved areas.
+                </p>
+              </div>
+
+              <div className="p-7 rounded-3xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md transition-all">
+                <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-900 flex items-center justify-center text-xl font-bold mb-5">
+                  🍲
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Community Service</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Providing food relief and nutritional care with dignity through regular Sewa Rasoi community kitchen drives.
+                </p>
+              </div>
+
+              <div className="p-7 rounded-3xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md transition-all">
+                <div className="w-12 h-12 rounded-2xl bg-amber-100 text-amber-900 flex items-center justify-center text-xl font-bold mb-5">
+                  🤝
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Volunteerism</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Mobilizing citizens, youth, and professionals to actively dedicate time and skills to grassroots nation-building.
+                </p>
+              </div>
+
+              <div className="p-7 rounded-3xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md transition-all">
+                <div className="w-12 h-12 rounded-2xl bg-rose-100 text-rose-900 flex items-center justify-center text-xl font-bold mb-5">
+                  🛡️
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Support for People in Need</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Creating responsive safety nets for senior citizens, single parents, and economically marginalized families.
+                </p>
+              </div>
+
+              <div className="p-7 rounded-3xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md transition-all">
+                <div className="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-900 flex items-center justify-center text-xl font-bold mb-5">
+                  🔗
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Meaningful Partnerships</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Collaborating transparently with ethical hospitals, doctors, educational institutes, and community groups to multiply impact.
+                </p>
+              </div>
+
+              <div className="p-7 rounded-3xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md transition-all">
+                <div className="w-12 h-12 rounded-2xl bg-teal-100 text-teal-900 flex items-center justify-center text-xl font-bold mb-5">
+                  🌱
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Sustainable Community Initiatives</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Designing long-term programmes that foster community self-reliance, preventative health habits, and mutual cooperation.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            SECTION 4 — OUR JOURNEY
+            ======================================================== */}
+        <section className="py-20 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <span className="text-xs uppercase tracking-widest text-emerald-800 font-semibold">
+                Milestones
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 mt-2">
+                Our Journey
+              </h2>
+              <p className="text-slate-600 text-sm mt-3">
+                Key verified milestones achieved through community solidarity.
+              </p>
+            </div>
+
+            {/* Visual Timeline */}
+            <div className="relative border-l-2 border-slate-200 ml-4 md:ml-8 space-y-12">
+              
+              {/* Milestone 1 */}
+              <div className="relative pl-8 md:pl-10">
+                <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-emerald-700 border-4 border-white shadow-xs" />
+                <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-md">
+                  Inception
+                </span>
+                <h3 className="text-xl font-bold text-slate-900 mt-2">
+                  Formation of Tandicia Association
+                </h3>
+                <p className="text-slate-600 text-sm leading-relaxed mt-2 mb-4">
+                  Born from a shared realization that compassion and friendship are vital social forces, professionals and community volunteers came together with the motto: मित्रता • दोस्ती • अपनापन.
+                </p>
+                <img src="/public/team/team.png" alt="Inception team" className="w-full max-w-md h-48 object-cover rounded-2xl shadow-xs" />
+              </div>
+
+              {/* Milestone 2 */}
+              <div className="relative pl-8 md:pl-10">
+                <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-sky-800 border-4 border-white shadow-xs" />
+                <span className="text-xs font-bold uppercase tracking-wider text-sky-800 bg-sky-50 px-2.5 py-1 rounded-md">
+                  Healthcare Outreach
+                </span>
+                <h3 className="text-xl font-bold text-slate-900 mt-2">
+                  Launch of Community Eye Care Camps
+                </h3>
+                <p className="text-slate-600 text-sm leading-relaxed mt-2 mb-4">
+                  Mobilized certified ophthalmologists and volunteers to conduct free diagnostic eye screening camps, distributing prescription spectacles and identifying patients needing cataract procedures.
+                </p>
+                <img src="/story1.png" alt="Eye camp launch" className="w-full max-w-md h-48 object-cover rounded-2xl shadow-xs" />
+              </div>
+
+              {/* Milestone 3 */}
+              <div className="relative pl-8 md:pl-10">
+                <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-amber-600 border-4 border-white shadow-xs" />
+                <span className="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-2.5 py-1 rounded-md">
+                  Nutritional Dignity
+                </span>
+                <h3 className="text-xl font-bold text-slate-900 mt-2">
+                  Establishment of Sewa Rasoi
+                </h3>
+                <p className="text-slate-600 text-sm leading-relaxed mt-2 mb-4">
+                  Commenced volunteer-driven community kitchens serving warm, hygienic, and nutritious meals to attendants outside hospitals and underserved neighbourhoods.
+                </p>
+                <img src="/image.png" alt="Sewa Rasoi launch" className="w-full max-w-md h-48 object-cover rounded-2xl shadow-xs" />
+              </div>
+
+              {/* Milestone 4 */}
+              <div className="relative pl-8 md:pl-10">
+                <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-indigo-700 border-4 border-white shadow-xs" />
+                <span className="text-xs font-bold uppercase tracking-wider text-indigo-800 bg-indigo-50 px-2.5 py-1 rounded-md">
+                  Expanding Horizons
+                </span>
+                <h3 className="text-xl font-bold text-slate-900 mt-2">
+                  Inauguration of Nai Pehal Platform
+                </h3>
+                <p className="text-slate-600 text-sm leading-relaxed mt-2 mb-4">
+                  Expanded beyond healthcare and nutrition to support elderly citizens living alone and assist single-parent households through specialized social circles.
+                </p>
+                <img src="/story2.png" alt="Nai Pehal expansion" className="w-full max-w-md h-48 object-cover rounded-2xl shadow-xs" />
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            SECTION 5 — OUR ASSOCIATIONS
+            ======================================================== */}
+        <section className="py-20 bg-stone-50 border-t border-slate-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-14">
+              <span className="text-xs uppercase tracking-widest text-emerald-800 font-semibold">
+                Network & Alliances
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 mt-2">
+                Our Associations
+              </h2>
+              <p className="text-slate-600 text-sm mt-3">
+                Working collaboratively across professional and social ecosystems.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              <div className="p-5 rounded-2xl bg-white border border-slate-200 text-center flex flex-col items-center justify-center">
+                <span className="text-2xl mb-2">🏥</span>
+                <span className="text-sm font-bold text-slate-900">Medical</span>
+                <span className="text-xs text-slate-500 mt-1">Eye hospitals & clinics</span>
+              </div>
+              <div className="p-5 rounded-2xl bg-white border border-slate-200 text-center flex flex-col items-center justify-center">
+                <span className="text-2xl mb-2">🎓</span>
+                <span className="text-sm font-bold text-slate-900">Educational</span>
+                <span className="text-xs text-slate-500 mt-1">Colleges & youth groups</span>
+              </div>
+              <div className="p-5 rounded-2xl bg-white border border-slate-200 text-center flex flex-col items-center justify-center">
+                <span className="text-2xl mb-2">🏢</span>
+                <span className="text-sm font-bold text-slate-900">Corporate</span>
+                <span className="text-xs text-slate-500 mt-1">CSR & support partners</span>
+              </div>
+              <div className="p-5 rounded-2xl bg-white border border-slate-200 text-center flex flex-col items-center justify-center">
+                <span className="text-2xl mb-2">👥</span>
+                <span className="text-sm font-bold text-slate-900">Community</span>
+                <span className="text-xs text-slate-500 mt-1">Resident associations</span>
+              </div>
+              <div className="p-5 rounded-2xl bg-white border border-slate-200 text-center flex flex-col items-center justify-center col-span-2 md:col-span-1">
+                <span className="text-2xl mb-2">🏛️</span>
+                <span className="text-sm font-bold text-slate-900">Institutional</span>
+                <span className="text-xs text-slate-500 mt-1">Public health bodies</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            SECTION 6 — OUR VALUES
+            ======================================================== */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-14">
+              <span className="text-xs uppercase tracking-widest text-emerald-800 font-semibold">
+                Guiding Principles
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 mt-2">
+                Our Values
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+                <div className="w-12 h-12 mx-auto rounded-full bg-rose-100 text-rose-900 flex items-center justify-center text-xl mb-4">
+                  ❤️
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Compassion</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Approaching every human being with heartfelt care, empathy, and genuine love.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+                <div className="w-12 h-12 mx-auto rounded-full bg-amber-100 text-amber-900 flex items-center justify-center text-xl mb-4">
+                  👑
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Dignity</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Ensuring service never demeans, but always uplifts the self-respect of each individual.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+                <div className="w-12 h-12 mx-auto rounded-full bg-emerald-100 text-emerald-900 flex items-center justify-center text-xl mb-4">
+                  🤲
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Service</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Selfless dedication to the welfare of others without ego or expectation of reward.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+                <div className="w-12 h-12 mx-auto rounded-full bg-sky-100 text-sky-900 flex items-center justify-center text-xl mb-4">
+                  🌐
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Community</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Believing that solidarity, mutual aid, and kinship are society’s greatest treasures.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center sm:col-span-2 lg:col-span-1">
+                <div className="w-12 h-12 mx-auto rounded-full bg-indigo-100 text-indigo-900 flex items-center justify-center text-xl mb-4">
+                  ⚖️
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Integrity</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Unbending transparency, clean statutory records, and strict accountability in every action.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            FINAL CTA
+            ======================================================== */}
+        <section className="py-20 bg-emerald-950 text-white text-center">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+            <span className="text-xs uppercase tracking-widest text-emerald-300 font-semibold block">
+              Walk With Us
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+              Be Part of the Journey
+            </h2>
+            <p className="text-slate-300 text-base leading-relaxed">
+              Whether you are a medical doctor, a working professional, a student, or someone who wants to help, there is a place for you at Tandicia.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+              <Link
+                to="/contact?interest=Volunteering"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white text-slate-950 hover:bg-slate-100 font-semibold text-sm transition-all"
+              >
+                Join Us
+              </Link>
+              <Link
+                to="/contact?interest=Partnership"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-emerald-800 hover:bg-emerald-700 text-white border border-emerald-600 font-semibold text-sm transition-all"
+              >
+                Partner With Us
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
     </div>
   );
 }
