@@ -636,6 +636,40 @@ export default function Admin() {
                 ))}
               </div>
             )}
+
+            {/* Default Base Photos Gallery */}
+            <div className="mt-10 pt-8 border-t border-slate-200">
+              <h2 className="text-xl font-bold text-slate-900 mb-1">
+                Default Camp Photos ({DEFAULT_PHOTOS.length})
+              </h2>
+              <p className="text-xs text-slate-500 mb-6">
+                These are the verified base photos from all eye camps. They are always visible across the website.
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {DEFAULT_PHOTOS.map((photo) => (
+                  <div
+                    key={photo.id}
+                    className="border border-slate-200 rounded-xl overflow-hidden bg-stone-50"
+                  >
+                    <div className="relative h-32 bg-slate-200">
+                      <img
+                        src={photo.src}
+                        alt={photo.title}
+                        className="w-full h-full object-cover"
+                        onError={(e) => { e.target.src = '/image.png'; }}
+                      />
+                      <span className="absolute top-2 left-2 bg-sky-800/80 text-white text-[10px] font-semibold px-2 py-0.5 rounded-full">
+                        {photo.category}
+                      </span>
+                    </div>
+                    <div className="p-2.5">
+                      <h4 className="text-xs font-bold text-slate-800 line-clamp-1">{photo.title}</h4>
+                      <p className="text-[10px] text-slate-500 mt-0.5">{photo.location} • {photo.date}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         )}
 
