@@ -30,7 +30,7 @@ export default function Media() {
         <section className="relative py-28 bg-slate-950 text-white overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
-              src="/camps/camp_bhati_mines_team.jpg"
+              src="/camps/camp1/1st Camp/E1-4.jpeg"
               alt="Tandicia community moments"
               className="w-full h-full object-cover filter brightness-[0.35] contrast-[1.05]"
             />
@@ -61,7 +61,7 @@ export default function Media() {
             <div className="rounded-3xl border border-slate-200 overflow-hidden bg-stone-50 grid grid-cols-1 lg:grid-cols-12 shadow-sm">
               <div className="lg:col-span-6 relative h-80 lg:h-auto">
                 <img
-                  src="/camps/camp_doctor_exam.jpg"
+                  src="/camps/camp3/3rd camp/E3-8.jpeg"
                   alt="Featured Story - Doctor examining patient"
                   className="w-full h-full object-cover"
                 />
@@ -217,9 +217,10 @@ export default function Media() {
 
             <div className="space-y-4">
               <div className="p-6 rounded-2xl bg-white border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div className="space-y-1">
+                <img src="/camps/camp3/3rd camp/News_paper_1.jpeg" alt="National Prahari Coverage" className="w-24 h-24 object-cover rounded-xl border border-slate-200" />
+                <div className="space-y-1 flex-1">
                   <div className="flex items-center gap-3 text-xs text-slate-500">
-                    <span className="font-bold text-sky-900">Regional Daily Bulletin</span>
+                    <span className="font-bold text-sky-900">National Prahari Coverage</span>
                     <span>•</span>
                     <span>Verified Feature</span>
                   </div>
@@ -233,9 +234,10 @@ export default function Media() {
               </div>
 
               <div className="p-6 rounded-2xl bg-white border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div className="space-y-1">
+                <img src="/camps/camp3/3rd camp/News_Paper_4.jpeg" alt="Press Coverage of Eye Camp" className="w-24 h-24 object-cover rounded-xl border border-slate-200" />
+                <div className="space-y-1 flex-1">
                   <div className="flex items-center gap-3 text-xs text-slate-500">
-                    <span className="font-bold text-sky-900">Community Health Journal</span>
+                    <span className="font-bold text-sky-900">Press Coverage of Eye Camp</span>
                     <span>•</span>
                     <span>Field Spotlight</span>
                   </div>

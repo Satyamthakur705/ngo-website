@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 export default function Impact() {
   const verifiedStats = [
     { label: "People Reached", value: "XX+", desc: "Direct beneficiaries of all field activities", color: "text-amber-400" },
-    { label: "Eye Camps", value: "XX+", desc: "Full-day clinical diagnostic screening camps", color: "text-emerald-400" },
+    { label: "Eye Camps", value: "4+", desc: "Full-day clinical diagnostic screening camps", color: "text-emerald-400" },
     { label: "Spectacles Distributed", value: "XX+", desc: "Free prescription corrective eyeglasses", color: "text-sky-400" },
     { label: "Meals Served", value: "XX+", desc: "Fresh, hot meals served via Sewa Rasoi", color: "text-amber-300" },
     { label: "Active Volunteers", value: "XX+", desc: "Professionals, students & community members", color: "text-rose-400" },
@@ -18,7 +18,7 @@ export default function Impact() {
       activity: "Comprehensive diagnostic eye refraction, cataract screening & spectacle provision",
       reached: "XX+ Patients examined & verified",
       outcome: "Immediate restoration of clear vision, reading ability, and work safety for daily earners.",
-      image: "/camps/camp_doctor_exam.jpg",
+      image: "/camps/camp3/3rd camp/E3-8.jpeg",
       tag: "Healthcare Impact"
     },
     {
@@ -44,7 +44,7 @@ export default function Impact() {
       name: "Smt. Ram Dulari",
       category: "Eye Care Beneficiary",
       quote: "Being able to see clearly again has restored my confidence. I can cook without fear and read my holy books every morning.",
-      image: "/camps/camp_doctor_exam.jpg"
+      image: "/camps/camp3/3rd camp/E3-5.jpeg"
     },
     {
       name: "Hospital Attendant Family",
@@ -71,7 +71,7 @@ export default function Impact() {
         <section className="relative py-28 bg-slate-950 text-white overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
-              src="/camps/camp_bhati_mines_team.jpg"
+              src="/camps/camp2/2nd Camp/E2-3.jpeg"
               alt="Tandicia verified impact"
               className="w-full h-full object-cover filter brightness-[0.35] contrast-[1.05]"
             />
@@ -203,9 +203,9 @@ export default function Impact() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-xs">
                 <span className="text-3xl mb-3 block">📍</span>
-                <h3 className="text-lg font-bold text-slate-900 mb-1">New Delhi Community Camps</h3>
+                <h3 className="text-lg font-bold text-slate-900 mb-1">New Delhi & Faridabad, Haryana</h3>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">
-                  Comprehensive free eye screening and spectacle distribution camps at Kusumpur Pahari and Bhati Mines (Sanjay Colony).
+                  Comprehensive free eye screening and spectacle distribution camps at Kusumpur Pahari, Bhati Mines (Sanjay Colony) and Mewla Maharajpur, Faridabad.
                 </p>
                 <span className="text-xs font-semibold text-emerald-800">Verified On-Site Camps</span>
               </div>

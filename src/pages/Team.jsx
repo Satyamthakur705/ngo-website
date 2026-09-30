@@ -30,7 +30,7 @@ export default function Team() {
         <section className="relative py-28 bg-slate-950 text-white overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
-              src="/camps/camp_bhati_mines_team.jpg"
+              src="/camps/camp1/1st Camp/E1-4.jpeg"
               alt="Tandicia Team and Volunteers at Camp"
               className="w-full h-full object-cover filter brightness-[0.35] contrast-[1.05]"
             />
