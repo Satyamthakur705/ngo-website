@@ -18,34 +18,52 @@ export default function Home() {
             <img
               src="/camps/camp2/2nd Camp/E2-3.jpeg"
               alt="Tandicia Volunteers and Community Activity"
-              className="w-full h-full object-cover object-center filter brightness-[0.42] contrast-[1.05]"
+              className="w-full h-full object-cover object-center filter brightness-[0.35] contrast-[1.08] saturate-[0.9]"
             />
-            {/* Warm gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
+            {/* Warm cinematic gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-slate-950/20" />
+            <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/20 via-transparent to-transparent" />
           </div>
 
           <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center text-white">
             
             {/* Tagline Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-900/60 border border-emerald-500/40 backdrop-blur-md mb-6 animate-in fade-in duration-300">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-xs sm:text-sm font-semibold tracking-wider text-emerald-200">
+            <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-emerald-900/40 border border-emerald-400/30 backdrop-blur-xl mb-8">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-lg shadow-emerald-400/50" />
+              <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-emerald-200/90 uppercase">
                 मित्रता • दोस्ती • अपनापन
               </span>
             </div>
 
+            {/* Decorative line above heading */}
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <span className="h-[1px] w-12 bg-gradient-to-r from-transparent to-amber-400/60" />
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400/70" />
+              <span className="h-[1px] w-12 bg-gradient-to-l from-transparent to-amber-400/60" />
+            </div>
+
             {/* Main Heading */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-4">
-              TANDICIA ASSOCIATION
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-5 drop-shadow-[0_2px_20px_rgba(255,255,255,0.08)]">
+              <span className="block">TANDICIA</span>
+              <span className="block mt-1 bg-gradient-to-r from-white via-amber-100 to-white bg-clip-text text-transparent">ASSOCIATION</span>
             </h1>
 
-            {/* Sub-headline */}
-            <p className="text-lg sm:text-2xl font-serif text-amber-200/90 font-normal tracking-wide max-w-3xl mx-auto mb-6">
-              Connecting People. Serving Communities. Being There for Each Other.
+            {/* Sub-headline with italic elegance */}
+            <p className="text-lg sm:text-2xl font-serif italic text-amber-200/90 font-normal tracking-wide max-w-3xl mx-auto mb-4 leading-relaxed">
+              Connecting People. Serving Communities.
+              <br className="hidden sm:block" />
+              Being There for Each Other.
             </p>
 
+            {/* Decorative divider */}
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <span className="h-[1px] w-8 bg-amber-400/40" />
+              <span className="text-amber-400/60 text-xs">✦</span>
+              <span className="h-[1px] w-8 bg-amber-400/40" />
+            </div>
+
             {/* Supporting text */}
-            <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed mb-10">
+            <p className="text-base sm:text-lg text-slate-300/90 max-w-2xl mx-auto leading-relaxed mb-10 font-light">
               A community-driven initiative bringing people, professionals and volunteers together to create meaningful social impact.
             </p>
 
@@ -53,18 +71,21 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 to="/eye-camps"
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-emerald-700 hover:bg-emerald-600 text-white font-semibold text-base transition-all shadow-lg hover:shadow-emerald-900/30"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-emerald-700 hover:bg-emerald-600 text-white font-semibold text-base transition-all shadow-lg hover:shadow-emerald-900/40 hover:-translate-y-0.5"
               >
                 Explore Our Work
               </Link>
               <Link
                 to="/contact?interest=Volunteering"
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-md font-semibold text-base transition-all"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/25 backdrop-blur-md font-semibold text-base transition-all hover:-translate-y-0.5"
               >
                 Join Tandicia
               </Link>
             </div>
           </div>
+
+          {/* Bottom fade */}
+          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-stone-50 to-transparent z-10" />
         </section>
 
         {/* ========================================================
